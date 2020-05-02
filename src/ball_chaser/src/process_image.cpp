@@ -32,7 +32,10 @@ void process_image_callback(const sensor_msgs::Image img)
     // Request a stop when there's no white ball seen by the camera
     int white_pixel_position = -1;
     for (int i = 0; i < img.height * img.step; i++) {
-        if (img.data[i] == white_pixel) {
+        // Check if we could find a white pixel by checking all RGB data.
+        if (img.data[i] == white_pixel 
+		and img.data[i+1] == white_pixel 
+		and  img.data[i+2] == white_pixel ) {
             white_pixel_position = i;
             break;
         }
@@ -40,16 +43,20 @@ void process_image_callback(const sensor_msgs::Image img)
     if (white_pixel_position != -1 )
     {
       int segment = (white_pixel_position % img.step) / (img.step/3);
+      // Check if the white pixel is in the left segment. If yes, turn left.
       if (segment  == 0) {
          drive_robot(0,0.5); 
       }
+      // Check if the white pixel is in the center segment. If yes, move ahead.
       else if (segment == 1 ) {
          drive_robot(0.5, 0);
       }
+      // Check if the white pixel is in the right segment. If yes, turn right.
       else {
          drive_robot(0,-0.5);
       }
     }
+    // If no white pixel found, stop.
     else {
        drive_robot(0, 0);
     }
