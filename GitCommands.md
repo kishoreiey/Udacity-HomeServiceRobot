@@ -1,5 +1,6 @@
 # Initialize git workspace.
 ```
+cd catkin_ws
 git init
 git config --global user.email "kishoreiey@gmail.com"
 git config --global user.name "Kishore Varma"
