@@ -4270,37 +4270,6 @@
               <focalLength>0.0</focalLength>
           </plugin>
         </sensor>
-        <sensor name='camera1' type='camera'>
-          <update_rate>30</update_rate>
-          <camera name='head'>
-            <horizontal_fov>1.39626</horizontal_fov>
-            <image>
-              <width>800</width>
-              <height>800</height>
-              <format>R8G8B8</format>
-            </image>
-            <clip>
-              <near>0.02</near>
-              <far>300</far>
-            </clip>
-          </camera>
-          <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
-            <alwaysOn>true</alwaysOn>
-            <updateRate>0.0</updateRate>
-            <cameraName>camera</cameraName>
-            <imageTopicName>rgb/image_raw</imageTopicName>
-            <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
-            <frameName>camera</frameName>
-            <hackBaseline>0.07</hackBaseline>
-            <distortionK1>0.0</distortionK1>
-            <distortionK2>0.0</distortionK2>
-            <distortionK3>0.0</distortionK3>
-            <distortionT1>0.0</distortionT1>
-            <distortionT2>0.0</distortionT2>
-            <robotNamespace>/</robotNamespace>
-          </plugin>
-          <pose frame=''>0.2 0 0 0 -0 0</pose>
-        </sensor>
         <velocity_decay/>
         <gravity>1</gravity>
         <velocity_decay/>
