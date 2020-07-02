@@ -23,9 +23,13 @@ git reset
 ```
 
 # To clone an old repo and create a new one.
+```
 git clone --bare https://github.com/exampleuser/old-repository.git
 cd old-repository.git
+```
 # Create new Repo on GitHub and push to it.
+```
 git push --mirror https://github.com/exampleuser/new-repository.git
 cd ..
 rm -rf old-repository.git
+```
