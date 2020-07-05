@@ -17,7 +17,7 @@ int main(int argc, char** argv){
   }
 
   // Sleep for 8 seconds to let add_marker node come up.
-  sleep(5);
+  //sleep(5);
   
   move_base_msgs::MoveBaseGoal goal;
 
