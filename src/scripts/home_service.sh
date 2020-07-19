@@ -43,6 +43,7 @@ if [ $OPTION -eq 0 -o $OPTION -eq 5 ]; then
  xterm  -e  "roslaunch pick_objects pick_objects.launch" &
  sleep 5
 fi
+
 if [ $OPTION -eq 10 ]; then
  echo "Extras: Running TeleOp Keyboard";
  xterm -e "roslaunch turtlebot_teleop keyboard_teleop.launch" & 
