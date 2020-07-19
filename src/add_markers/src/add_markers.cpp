@@ -17,11 +17,12 @@ void odom_callback(const nav_msgs::Odometry::ConstPtr& msg)
     marker_pub.publish(marker);
   }
   
-  if (msg->pose.pose.position.x < -1.57 && msg->pose.pose.position.y < -0.5) {
+  if (msg->pose.pose.position.x < -6.2 && msg->pose.pose.position.y > 0.6) {
     ROS_INFO_THROTTLE(2, "Making marker visible at x: [%f], y: [%f]", msg->pose.pose.position.x,msg->pose.pose.position.y);
-    marker.pose.position.x = -1.0;
-    marker.pose.position.y = -0.5;
+    marker.pose.position.x = -6.15;
+    marker.pose.position.y = 0.7;
     marker.color.a = 1.0;
+    sleep(2);
     marker_pub.publish(marker);
   }
 }
