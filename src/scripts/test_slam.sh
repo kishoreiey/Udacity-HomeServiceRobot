@@ -1,8 +1,11 @@
 #!/bin/sh
 
 echo "Running Gazebo World";
-export TURTLEBOT_GAZEBO_WORLD_FILE=/home/workspace/catkin_ws/src/my_robot/worlds/kishore_world_without_robot.world
-xterm  -e  "roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=/home/workspace/catkin_ws/src/my_robot/worlds/kishore_world_without_robot.world" &
+# Find world file.
+worldFile=$(find / -name 'kishore_world_without_robot.world');
+echo "\tUsing World File: ${worldFile}"
+export TURTLEBOT_GAZEBO_WORLD_FILE=$worldFile
+xterm  -e  "roslaunch turtlebot_gazebo turtlebot_world.launch" &
 sleep 5
 
 echo "Running Turtlebot gmapping_demo";

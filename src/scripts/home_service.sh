@@ -12,16 +12,22 @@ OPTION=${1:-0}
 echo "Option: $OPTION";
 if [ $OPTION -eq 0 -o $OPTION -eq 1 ]; then
  echo "Running Gazebo World";
+ # Find world file.
+ worldFile=$(find / -name 'kishore_world_without_robot.world');
+ echo "\tUsing World File: ${worldFile}"
  # export ROBOT_INITIAL_POSE="-x -5 -y 0 -Y 0"
- export TURTLEBOT_GAZEBO_WORLD_FILE=/home/workspace/catkin_ws/src/my_robot/worlds/kishore_world_without_robot.world
+ export TURTLEBOT_GAZEBO_WORLD_FILE=$worldFile
  #xterm  -e  "roslaunch turtlebot_gazebo turtlebot_world.launch" &
- xterm  -e  "roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=/home/workspace/catkin_ws/src/my_robot/worlds/kishore_world_without_robot.world" &
+ xterm  -e  "roslaunch turtlebot_gazebo turtlebot_world.launch" &
  #xterm  -e  "roslaunch my_robot world.launch" &
  sleep 5
 fi
 if [ $OPTION -eq 0 -o $OPTION -eq 2 ]; then
  echo "Running AMCL DEMO";
- xterm  -e  "roslaunch turtlebot_gazebo amcl_demo.launch map_file:=/home/workspace/catkin_ws/src/my_robot/maps/kishore.yaml" & 
+ # Find kishore.yaml map file.
+ mapFile=$(find / -name 'kishore.yaml');
+ echo "\tUsing Map File: ${mapFile}"
+ xterm  -e  "roslaunch turtlebot_gazebo amcl_demo.launch map_file:=${mapFile}" & 
  #xterm  -e  "roslaunch turtlebot_gazebo amcl_demo.launch" & 
  #xterm  -e  "roslaunch my_robot amcl.launch" & 
  sleep 5
